@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+wtest
+
+test <p id="p_itry_num">-</p>번째 결과 : <p id="p_itest_result">-</p>
+<a onclick="aaa();">결과 보여주세요!</a>
+<script>
+    let try_num = 0;
+    function aaa(){
+        try_num++;
+        $("#p_itry_num").text(try_num);
+        $.ajax({
+            url: "/api/itest",
+            type: "POST",
+            contentType : 'application/json; charset=utf-8',
+            data: JSON.stringify({
+                'try_num' : try_num
+            }),
+            cache: false,
+            success: (data, status, xhr)=>{
+                //alert(JSON.stringify(data));
+                $("#p_itest_result").text(data);
+            },
+            error: (data)=>{
+            },
+        });
+
+    }
+
+</script>
+</body>
+</html>

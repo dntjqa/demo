@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+글쓰는 페이지입니다!!(test 완료)
+
+<input id="create_tbboard_title" name="title"/>
+<input id="create_tbboard_content" name="content"/>
+<a onclick="aaa();">작성하기</a>
+
+<script>
+function aaa(){
+    alert(1);
+    $.ajax({
+        url: "/api/ptest",
+        type: "POST",
+        contentType : 'application/json; charset=utf-8',
+        data: JSON.stringify({
+            'title' : $("#create_tbboard_title").val(),
+            'content' : $("#create_tbboard_content").val()
+        }),
+        cache: false,
+        success: (data, status, xhr)=>{
+            alert(JSON.stringify(data));
+        },
+        error: (data)=>{
+        },
+    });
+    /*
+    $.ajax({
+        url: "/api/mtest",
+        type: "POST",
+        contentType : 'application/json; charset=utf-8',
+        data: JSON.stringify({
+            'id' : 'eb594e52-8f43-4f9d-bb06-47bb4182c83d'
+        }),
+        cache: false,
+        success: (data, status, xhr)=>{
+            alert(1);
+        },
+        error: (data)=>{
+        },
+    });
+    */
+}
+
+</script>
+</body>
+</html>
